@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>uwu</title>
+ </head>
+ <body>
+  <p>Enter Count:</p>
+  <textarea id="177013" style="margin-bottom:-19px;margin-top:-24px"" name="CountTextbox" value="" ></textarea><br><br>
+  <input type="button" value="make update" onclick="SubmitCount()" id="yeet">
+  <input type="button" value="clear" onclick="clear" id="1337">
+  <input type="checkbox" id="228922" style="position: absolute; left: 193px; top: 30px;" onclick="autoloop()"><p style="position: absolute; left: 215px; top: 13px;">auto count</p><input style="position: absolute; left: 288px; top: 28px; width:40px;" value="20" id="17" type="number" min="10"><p style="position: absolute; left: 335px; top: 13px;"> ms between counts</p><br>
+  <input type="checkbox" id="228923" checked style="position: absolute; left: 193px; top: 55px;" onclick="clearPastMessages()"><p style="position: absolute; left: 215px; top: 39px;">display </p><input value="50" id="18" type="number" min="1" style="position: absolute; left: 266px; top: 54px; width:40px"><p style="position: absolute; left: 315px; top: 39px;"> messages</p><br>
+  <input type="checkbox" id="228924" checked style="position: absolute; left: 193px; top: 80px;" ><p style="position: absolute; left: 215px; top: 65px;">forced delay between counts of</p>
+  <input type="checkbox" id="228925" style="position: absolute; left: 193px; top: 105px;"><p style="position: absolute; left: 215px; top: 90px;">count with a bot</p><input id="19" type="number" min="0" style="position: absolute; left: 419px; top: 80px; width:40px" value="333"><p style="position: absolute; left: 466px; top: 65px;"> ms</p><br>
+  <p class="counts" id="{:}" ></p>  </form>
+
+  <p id="{:'-D" style="color:red;position: absolute; left: 10px; top: 110px;"></p>
+ </body>
+ <script>
+	var myVar;
+	var now;
+	document.addEventListener("keydown", keyDownTextField, false);
+	var now1;
+	var ticks;
+	var ticks1;
+	var plsWork;
+	function pleaseWaitAFewSecondsBeforeTryingAgain(clear) {
+		if(clear == 0) {
+			now1 = new Date();
+			ticks1 = now1.getTime();
+			if(ticks1 - document.getElementsByClassName("counts")[1].id <= Number(document.getElementById("19").value)) {
+				document.getElementById("{:'-D").innerHTML = "Please wait a few seconds before trying again."
+				plsWork = 2;
+			} else {
+				plsWork = 1;
+			}
+		} else {
+			document.getElementById("{:'-D").innerHTML = ""
+		}
+	}
+	function autoloop() {
+		if(document.getElementById("228922").checked) {
+			myVar = setInterval(auto, document.getElementById("17").value);
+		}
+	}
+	function keyDownTextField(e) {
+		var keyCode = e.keyCode;
+		if((e.keyCode == 13 && (e.ctrlKey || e.metaKey))) {
+			document.getElementById("yeet").click();
+		}
+		if(((e.keyCode == 107 || e.keyCode == 16) && (e.ctrlKey || e.metaKey))) {
+			e.preventDefault(); 
+			document.getElementById("1337").click();
+		}
+	}
+	function SubmitCount() {
+		plsWork = 1;
+		pleaseWaitAFewSecondsBeforeTryingAgain(1);
+		now = new Date();
+		ticks = now.getTime();
+		if(document.getElementById("228924").checked && document.getElementsByClassName("counts")[1] != undefined) {
+			pleaseWaitAFewSecondsBeforeTryingAgain(0);
+		}
+		if (plsWork == 1) {
+			var count = document.getElementById("177013").value;
+			var nice_meme = document.createElement("P");
+			nice_meme.setAttribute('class', "counts");
+			nice_meme.setAttribute('id', ticks);
+			nice_meme.innerHTML = count;
+			document.body.appendChild(nice_meme);
+			var post = document.getElementById("{:}");
+			post.insertBefore(nice_meme, post.childNodes[0]);
+			if(document.getElementById("228925").checked) {
+				var count1 = document.getElementById("177013").value;
+				var nice_meme1 = document.createElement("P");
+				nice_meme1.setAttribute('class', "counts");
+				nice_meme1.setAttribute('id', ticks);
+				nice_meme1.innerHTML = Number(count1)+1;
+				document.body.appendChild(nice_meme1);
+				var post = document.getElementById("{:}");
+				post.insertBefore(nice_meme1, post.childNodes[0]);
+			}
+			document.getElementById("177013").value = "";
+			if(document.getElementById("228923").checked) {
+				clearPastMessages();
+			}
+		}
+	}
+	function clear() {
+		document.getElementById("177013").value = "";
+	}
+	function auto() {
+		if(document.getElementById("228922").checked) {
+			var count1 = document.getElementById("177013").value;
+			var nice_meme1 = document.createElement("P");
+			nice_meme1.setAttribute('class', "counts");
+			nice_meme1.innerHTML = count1;
+			document.body.appendChild(nice_meme1);
+			var post1 = document.getElementById("{:}");
+			post1.insertBefore(nice_meme1, post1.childNodes[0]);
+			document.getElementById("177013").value = Number(count1) + 1;
+			if(document.getElementById("228923").checked) {
+				clearPastMessages();
+			}
+		} else {
+			clearInterval(myVar);
+		}
+	}
+	function clearPastMessages() {
+		var delet = document.getElementById("18").value
+		var elements = document.getElementsByClassName("counts");
+		while(elements.length > Number(delet)+1){
+			elements[Number(delet)+1].parentNode.removeChild(elements[Number(delet)+1]);
+		}
+	}
+  </script>
+</html>
