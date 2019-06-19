@@ -8,6 +8,7 @@
   <textarea id="177013" style="margin-bottom:-19px;margin-top:-24px"" name="CountTextbox" value="" ></textarea><br><br>
   <input type="button" value="make update" onclick="SubmitCount()" id="yeet">
   <input type="button" value="clear" onclick="clear" id="1337">
+  <input type="checkbox" id="228921" style="position: absolute; left: 193px; top: 5px;"><p style="position: absolute; left: 215px; top:-10px;font-family:Times New Roman">AHK mode</p>
   <input type="checkbox" id="228922" style="position: absolute; left: 193px; top: 30px;" onclick="autoloop()"><p style="position: absolute; left: 215px; top: 13px;font-family:Times New Roman">auto count</p><input style="position: absolute; left: 288px; top: 28px; width:40px;" value="20" id="17" type="number" min="10"><p style="position: absolute; left: 335px; top: 13px;font-family:Times New Roman"> ms between counts</p><br>
   <input type="checkbox" id="228923" checked style="position: absolute; left: 193px; top: 55px;" onclick="clearPastMessages()"><p style="position: absolute; left: 215px; top: 39px;font-family:Times New Roman">display </p><input value="50" id="18" type="number" min="1" style="position: absolute; left: 266px; top: 54px; width:40px"><p style="position: absolute; left: 315px; top: 39px;font-family:Times New Roman"> messages</p><br>
   <input type="checkbox" id="228924" checked style="position: absolute; left: 193px; top: 80px;" ><p style="position: absolute; left: 215px; top: 65px;font-family:Times New Roman">forced delay between counts of</p>
@@ -20,6 +21,7 @@
 	var myVar;
 	var now;
 	document.addEventListener("keydown", keyDownTextField, false);
+	document.addEventListener("keydown", countAHK, false);
 	var now1;
 	var ticks;
 	var ticks1;
@@ -53,6 +55,22 @@
 			document.getElementById("1337").click();
 		}
 	}
+	function countAHK(e) {
+		if(document.getElementById("228921").checked) {
+			var keyCode = e.keyCode;
+			if(e.keyCode == 88) {
+				e.preventDefault();
+				var element = String(document.getElementById("177013").value);
+				document.getElementById("yeet").click();
+				document.getElementById("177013").value=element.slice(0,element.length-2);
+			}
+			if(e.keyCode == 90) {
+				e.preventDefault(); 
+				document.getElementById("1337").click();
+				clear();
+			}
+		}
+	}
 	function SubmitCount() {
 		plsWork = 1;
 		pleaseWaitAFewSecondsBeforeTryingAgain(1);
@@ -70,7 +88,7 @@
 			document.body.appendChild(nice_meme);
 			var post = document.getElementById("{:}");
 			post.insertBefore(nice_meme, post.childNodes[0]);
-			if(document.getElementById("228925").checked) {
+			if(document.getElementById("228925").checked && count != "") {
 				var count1 = document.getElementById("177013").value;
 				var nice_meme1 = document.createElement("P");
 				nice_meme1.setAttribute('class', "counts");
